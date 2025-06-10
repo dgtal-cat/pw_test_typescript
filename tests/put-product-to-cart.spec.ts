@@ -1,7 +1,7 @@
 import { test, expect, BrowserContext, Page } from '@playwright/test'
-import { MainPage } from '../pages/MainPage'
-import { BikesPage } from '../pages/BikesPage'
-import { CartPage } from '../pages/CartPage'
+import { MainPage } from '../src/pages/MainPage'
+import { BikesPage } from '../src/pages/BikesPage'
+import { CartPage } from '../src/pages/CartPage'
 
 test.describe('Проверка складывания товара в корзину', () => {
     let context: BrowserContext
@@ -33,6 +33,10 @@ test.describe('Проверка складывания товара в корз�
         const bikesPage = new BikesPage(page)
 
         await mainPage.headerMenu.openBikesCatalog()
+
+        await expect(bikesPage.catalogBlock.el).toBeVisible()
+        await expect(bikesPage.catalogItems.el.nth(0)).toBeVisible()
+
         const itemTitle = await bikesPage.addToCartItemById(0)
         await mainPage.headerMenu.clickOnCartIcon()
         const itemTitleInCart = await cartPage.getFirstItemTitle()

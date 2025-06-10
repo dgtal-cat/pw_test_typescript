@@ -1,5 +1,5 @@
 import { test, expect, BrowserContext, Page } from '@playwright/test'
-import { BlogPage } from '../pages/BlogPage'
+import { BlogPage } from '../src/pages/BlogPage'
 
 test.describe('Проверка страницы блога', () => {
     let context: BrowserContext
