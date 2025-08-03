@@ -1,14 +1,14 @@
 import { type Page, type Locator } from "@playwright/test"
 import { BasePage } from './BasePage'
+import BaseElement from '../elements/BaseElement'
 
 export class BikesPage extends BasePage {
-    readonly catalogBlock: Locator
-    readonly catalogItems: Locator
-
+    readonly catalogBlock: BaseElement
+    readonly catalogItems: BaseElement
     constructor(page: Page) {
         super(page)
-        this.catalogBlock = this.page.locator('div.catalog_block_template')
-        this.catalogItems = this.page.locator('div.catalog-block-view__item')
+        this.catalogBlock = new BaseElement(this.page.locator('div.catalog_block_template'))
+        this.catalogItems = new BaseElement(this.page.locator('div.catalog-block-view__item'))
     }
 
     async open() {
