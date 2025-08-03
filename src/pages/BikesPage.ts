@@ -5,6 +5,7 @@ import BaseElement from '../elements/BaseElement'
 export class BikesPage extends BasePage {
     readonly catalogBlock: BaseElement
     readonly catalogItems: BaseElement
+    
     constructor(page: Page) {
         super(page)
         this.catalogBlock = new BaseElement(this.page.locator('div.catalog_block_template'))
